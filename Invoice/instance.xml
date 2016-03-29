@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<invoiceDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="invoice_scheme.xsd">
+    
+<!-- 
+    XMLSCHEMA
+     xmlns:xsi="http:" äquivalent zu packages in java
+     Namenskonflikte vermeiden - namespace der spezielle spezifikationen festschreibt
+     :xs prefix zeigt an dass diese definition genutzt wird, so kann z.B. Elemente mit gleichem Namen aus anderen
+     .xsd files im gleichen xml file genutzt werden.
+     
+    Hashtabelle - Namespace wird gemappt auf Schema - spezifizieren ob lokales Schema genutzt wird oder Remote download    
+    Elemente bei mehrwertigen Attributen
+    Einzigartige Attribute = Attribut
+    
+    DTD:
+    DTD doesnt support key definition.
+    Instead mechanism to support internal reference via multimorphism
+ 
+    xs:ID data type that says no multiple attribute values = globally unique
+    xs:IDREF corresponding foreign Key to attribute VALUES(only to xs:ID globally unique)
+    No information about target element, polymorphic! (from,to,date or everything)
+    Parser detects if reference exists =/= html
+    
+    
+    XSLT:
+    allow for structural changes but still use CSS for visualization
+    
+    TEMPLATES XSLT:
+    templates - building blocks for xslt
+    template can represent an element (like from,to,date)
+    output method: text
+    extract only certain information
+    
+    (xml file + xsl stylesheet) * xsl converter = html
+    flexible in the way it allows conversion
+    
+    xsl stylesheet is an xml document.
+    
+    - match - xpath expression -> / is entry template root where you start
+    - xsl:value of select = "from" - output is text written in from (select like sql)
+    - xmlns:xsl is strictly bound to the namespace!
+    
+    
+    - xslt selecting nodes via xpath!
+    
+    chapter 16 exercises
+    
+    -->
+    
+    <customers>
+        
+        <customer id="1" name="MercedesBenz" phonenumber="07116871150"/>
+        <customer id="2" name="BMW"/>
+        <customer id="3" name="Ferrari" phonenumber="004357823782"/>
+        
+        
+        
+    </customers>  
+   
+   
+    <invoices>
+        <invoiceEntry amount="238,93" status="due" customer="1"/>
+        <invoiceEntry amount="138,23" status="open" customer="1"/>
+        <invoiceEntry amount="2000,00" status="cleared" customer="2"/>
+        
+        
+        
+        
+    </invoices>
+
+</invoiceDB>
