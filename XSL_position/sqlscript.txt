@@ -1,0 +1,7 @@
+INSERT INTO Customer (id, name) VALUES ('gurke', 'Marcel Hasenbalg')
+INSERT INTO Customer (id, name) VALUES ('harrison', 'Eve Gardener')
+INSERT INTO Customer (id, name) VALUES ('chewbaca', 'Basti')
+INSERT INTO Customer (id, name) VALUES ('yoda', 'Herbert')
+INSERT INTO Customer (id, name) VALUES ('luke', 'Christophe')
+INSERT INTO Customer (id, name) VALUES ('anakin', 'Gunther')
+INSERT INTO Customer (id, name) VALUES ('padme', 'Scheschonka')

@@ -1,0 +1,17 @@
+<memo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="memo.xsd"
+    date="2014-09-24" priority="high" >
+    <from id="gurke">Marcel Hasenbalg</from>
+    <to>Robi Renner</to>
+    <to id="harrison">Eve Gardener</to>
+    <to id="chewbaca">Basti</to>
+    <to id="yoda">Herbert</to>
+    <to id="luke">Christophe</to>
+    <to id="anakin">Gunther</to>
+    <to id="padme">Scheschonka</to>
+    <subject>Test</subject>
+    <content>
+        <para>See about XLST</para>
+        <para>More stuff emerging! <link linkend="gurke">sender</link>.</para>
+    </content>
+</memo>
