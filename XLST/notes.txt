@@ -1,0 +1,49 @@
+XLST - sidetechnology to CSS
+
+XLS is a language to transform XML documents to:
+-text
+-xml
+-html
+-xhtml
+-sql
+
+EXAM:
+basic html knowledge, p,table,colspan,rowspan, ul
+
+
+
+XSL-start
+namespace 	--> everything belonging to namespace is process instructions!
+				all other stuff is content
+				
+
+entry point	--> xpath expression
+
+template	--> template will match the root to the xml-instance document
+				match="/memo" (invisible root - descend to memo)
+				/ refers to a invisible element residing top of the first element
+				
+				
+output		--> default output is xml, change with output element (method attribute)
+
+
+XLST converter (piece of software) is given the (absolute) xpath expression.
+From this path the converter can descend to other nodes via (relative) xpath expression. 
+
+
+TRANSFORMATION SCENARIO:
+xls stylesheet, xml instance document
+
+
+selecting element
+- text() selects text node
+- . selects current element
+
+new line in xsl:
+ <xsl:variable name="n">
+        <xsl:text>
+</xsl:text>                
+    </xsl:variable>
+    
+paste new line:
+<xsl:value-of select="$n"/>
