@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<memo>
+    <from>
+        <name>Martin</name>
+        <surname>Goik</surname>
+    </from>
+    <to>
+        <name>Adam</name>
+        <surname>Hacker</surname>
+    </to>
+    <to>
+        <name>Eve</name>
+        <surname>Intruder</surname>
+    </to>
+    <date year="2005" month="1" day="6"/>
+    <subject>Firewall problems</subject>
+    <content>
+        <para>Thanks for your excellent work.</para>
+        <para>Our firewall is definitely broken!</para>
+    </content>
+</memo>

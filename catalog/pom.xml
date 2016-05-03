@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>de.hdm-stuttgart.mi</groupId>
+		<artifactId>lecturenotes-pom</artifactId>
+		<version>1.0</version>
+
+		<relativePath>../../../pom.xml</relativePath>
+	</parent>
+
+	<groupId>de.hdm-stuttgart.mi.sda1</groupId>
+	<artifactId>catalog</artifactId>
+	<version>0.8</version>
+	<packaging>jar</packaging>
+
+	<name>Catalog2</name>
+
+	<url>http://www.mi.hdm-stuttgart.de/freedocs</url>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+			<version>${org.jdom.jdom2.version}</version>
+		</dependency>
+
+	</dependencies>
+</project>
