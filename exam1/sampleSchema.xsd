@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    vc:maxVersion="1.1" vc:minVersion="1.0" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning">
+
+
+    <xs:element name="personDB">
+        <xs:complexType>
+            <xs:sequence>
+                
+                
+                
+                <xs:element name="personsTable">
+                    <xs:complexType>
+                        <xs:sequence>
+                            
+                            <xs:element name="person">
+                                <xs:complexType>
+                                    
+                                    <xs:attribute name="id" use="required" type="xs:nonNegativeInteger"/>
+                                    
+                                    
+                                    <xs:attribute name="fullName" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="0"/>
+                                                <xs:maxLength value="20"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                        
+                                    </xs:attribute>
+                                    
+                                    <xs:attribute name="birth" use="optional" type="xs:date"/>
+                                    
+                                    
+                                    
+                                    <xs:attribute name="category" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="friend"/>
+                                                <xs:enumeration value="customer"/>
+                                                <xs:enumeration value="colleague"/>
+                                                <xs:minLength value="0"/>
+                                                <xs:maxLength value="12"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    
+                                </xs:complexType>
+                            </xs:element>
+                            
+
+                        </xs:sequence>
+                        
+                        
+                        
+                    </xs:complexType> 
+                    
+                    
+                    
+                </xs:element>
+                
+                
+                <xs:element name="addressTable">
+                    <xs:complexType>
+                        <xs:sequence>
+                
+                            <xs:element name="address">
+                                <xs:complexType>
+                                    <xs:attribute name="person" use="required" type="xs:nonNegativeInteger"/>
+                                    
+                                    <xs:attribute name="street" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="0"/>
+                                                <xs:maxLength value="255"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                        
+                                    </xs:attribute>
+                                    
+                                    
+                                    <xs:attribute name="number" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="0"/>
+                                                <xs:maxLength value="255"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                        
+                                    </xs:attribute>
+                                    
+                                    
+                                    <xs:attribute name="town" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:minLength value="0"/>
+                                                <xs:maxLength value="255"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                        
+                                    </xs:attribute>
+                                    
+                                    
+                                    <xs:attribute name="zip" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:length value="7"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                        
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            </xs:sequence>
+
+
+        
+
+
+
+
+
+
+
+
+
+               
+
+
+
+
+
+                
+
+            
+        </xs:complexType>
+
+        <xs:key name="customerField">
+            <xs:selector xpath="personsTable/person"></xs:selector>
+            <xs:field xpath="@id"></xs:field>
+        </xs:key>
+        
+        <xs:keyref refer="customerField" name="customerReference">
+            <xs:selector xpath="addressTable/address"></xs:selector>
+            <xs:field xpath="@person"></xs:field>
+        </xs:keyref>
+
+
+    </xs:element>
+    
+
+
+</xs:schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personDB xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="sampleSchema.xsd">
+    
+    
+    
+    
+    <personsTable>
+       <person id="3" fullName="Hans Günther" birth="2002-09-24" category="customer"/>
+    </personsTable>
+    
+    <addressTable>
+       <address person="3" street="Schwarzwaldstraße" number="118A" town="Stuttgart" zip="7056955"/>
+    </addressTable>
+   
+   
+    
+    
+   
+</personDB>
