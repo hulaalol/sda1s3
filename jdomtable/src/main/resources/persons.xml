@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addressbook>
+    <person>
+        <name>Scott Geoffrey</name>
+        <birthday>1942-07-22</birthday>
+    </person>
+    <person>
+        <name>Julia Duncan</name>
+        <birthday>2001-11-07</birthday>
+    </person>
+    <person>
+        <name>Jim Smith</name>
+        <birthday>1981-04-13</birthday>
+    </person>
+</addressbook>
