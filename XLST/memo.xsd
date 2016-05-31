@@ -1,0 +1,61 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.0" vc:maxVersion="1.1">
+    
+    <xs:element name="memo">
+        <xs:complexType>
+            <xs:sequence> 
+                <xs:element name="from" type="Person"/> 
+                <xs:element name="to" type="Person" minOccurs="1" maxOccurs="unbounded"/>
+                <xs:element name="subject" type="xs:string"/>
+                <xs:element ref="content"/>
+            </xs:sequence>
+            <xs:attribute name="date" type="xs:date" use="required"/> 
+            <xs:attribute name="priority" type="Priority" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="Person">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="id" type="xs:ID"/>
+            </xs:extension>
+        </xs:simpleContent>               
+    </xs:complexType>
+    
+    <xs:element name="content">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="para" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        
+    </xs:element>
+    
+    <xs:element name="para">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="link" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="link">
+        <xs:complexType mixed="true">
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute name="linkend" type="xs:IDREF"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:simpleType name="Priority">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="low"/>
+            <xs:enumeration value="medium"/>
+            <xs:enumeration value="high"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+</xs:schema>

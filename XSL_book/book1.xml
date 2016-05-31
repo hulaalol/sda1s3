@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="file:/D:/Eclipse%20Workspace/XSL_book/book_schema.xsd">
+    <title>Java for Beginners
+    </title>
+    <chapter title="Classes">
+        <paragraph>The String Class</paragraph>
+        <paragraph>The Thread Class</paragraph>
+        <paragraph>The Integer Wrapper</paragraph>
+        <paragraph>TimerThread</paragraph>
+        <paragraph>Inheritance</paragraph>
+    </chapter>
+    <chapter title="Exceptions">
+        <paragraph>NullPointer Exception</paragraph>
+        <paragraph>ConcurrentModification Exception</paragraph>
+        <paragraph>IllegalArgument Exception</paragraph>
+    </chapter>
+</book>

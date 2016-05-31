@@ -1,0 +1,8 @@
+INSERT INTO Customer (name, type) VALUES ('Marcel Hasenbalg', 'employee')
+INSERT INTO Customer (name, type) VALUES ('Robi Renner', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Eve Gardener', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Basti', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Herbert', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Christophe', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Gunther', 'customer')
+INSERT INTO Customer (name, type) VALUES ('Scheschonka', 'customer')
