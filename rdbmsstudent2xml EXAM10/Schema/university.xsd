@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="university">
+        <xs:complexType>
+            <xs:sequence>
+
+                <xs:element name="studyCourses" maxOccurs="1" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+
+
+
+                            <xs:element name="studyCourse" maxOccurs="unbounded">
+                                <xs:complexType>
+
+
+
+                                    <xs:sequence>
+
+
+                                        <xs:element name="name" maxOccurs="1" minOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:maxLength value="255"> </xs:maxLength>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+
+
+
+                                        <xs:element name="shortName" maxOccurs="1" minOccurs="0">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:maxLength value="3"> </xs:maxLength>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+
+                                        </xs:element>
+
+                                    </xs:sequence>
+
+
+
+
+
+                                    <xs:attribute name="id" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:nonNegativeInteger"
+                                            > </xs:restriction>
+                                        </xs:simpleType>
+
+
+                                    </xs:attribute>
+
+                                    <xs:attribute name="program" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="B"/>
+                                                <xs:enumeration value="M"/>
+                                                <xs:maxLength value="1"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+
+
+                                </xs:complexType>
+                            </xs:element>
+
+                        </xs:sequence>
+                    </xs:complexType>
+
+
+
+
+
+                </xs:element>
+
+
+                <xs:element name="students" maxOccurs="1" minOccurs="1">
+
+
+                    <xs:complexType>
+                        <xs:sequence>
+
+
+                            <xs:element name="student" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="fullName" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:maxLength value="255"> </xs:maxLength>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+
+
+                                        <xs:element name="email" minOccurs="1" maxOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                  <xs:maxLength value="255"> </xs:maxLength>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+
+
+
+                                    </xs:sequence>
+
+
+                                    <xs:attribute name="id" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:nonNegativeInteger">
+                                            </xs:restriction>
+                                        </xs:simpleType>
+
+                                    </xs:attribute>
+
+
+                                    <xs:attribute name="studyCourse" use="optional">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:nonNegativeInteger"
+                                            > </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+
+
+                                </xs:complexType>
+
+                            </xs:element>
+
+                        </xs:sequence>
+
+
+
+
+
+                    </xs:complexType>
+
+                </xs:element>
+
+            </xs:sequence>
+
+
+        </xs:complexType>
+
+
+
+
+        <xs:unique name="uniqueStudentID">
+            <xs:selector xpath="students/student"></xs:selector>
+            <xs:field xpath="@id"></xs:field>
+        </xs:unique>
+        
+        <xs:unique name="uniqueCourseID">
+            <xs:selector xpath="studyCourses/studyCourse"></xs:selector>
+            <xs:field xpath="@id"></xs:field>
+        </xs:unique>
+        
+        <xs:unique name="uniqueEmail">
+            <xs:selector xpath="students/student/email"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:unique>
+
+        <xs:key name="student">
+            <xs:selector xpath="studyCourses/studyCourse"/>
+            <xs:field xpath="@id"/>
+        </xs:key>
+
+        <xs:keyref refer="student" name="studyCourseRef">
+            <xs:selector xpath="students/student"/>
+            <xs:field xpath="@studyCourse"/>
+        </xs:keyref>
+
+
+    </xs:element>
+
+</xs:schema>

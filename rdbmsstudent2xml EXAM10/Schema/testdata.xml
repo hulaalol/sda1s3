@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<university xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="university.xsd">
+    
+    <studyCourses>
+        <studyCourse id="1" program="B">
+            <name>Mobile Media</name>
+            <shortName>MMB</shortName>
+        </studyCourse>
+        <studyCourse id="2" program="M">
+            <name>Computer Science in Media</name>
+        </studyCourse>
+    </studyCourses>
+    
+    
+    <students>
+        <student id="33">
+            <fullName>Jim Bone</fullName>
+            <email>bone@foo.org</email>
+        </student>
+        <student id="40" studyCourse="1">
+            <fullName>Tracy Adams</fullName>
+            <email>adams@security.com</email>
+        </student>
+    </students>
+    
+    
+</university>
