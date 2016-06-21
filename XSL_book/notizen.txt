@@ -1,0 +1,10 @@
+templates benutzen kein for-each
+
+<xsl: template match="title">
+
+<h1>
+<xsl:value-of select="."/>
+</h1>
+
+</xsl: template>
+
