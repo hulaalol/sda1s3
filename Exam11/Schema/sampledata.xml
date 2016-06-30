@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<top xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="scripts.xsd">
+
+    <languages>
+        <language>bourneshell</language>
+        <language>python</language>
+        <language>ruby</language>
+        <language>php</language>
+        <language>html</language>
+    </languages>
+
+    <scripts>
+        <script id="recursiveFileSearch">
+            <description>Recursively search for files having a .txt extension</description>
+            <language>bourneshell</language>
+            <sourcecode>find . -type f -and -name \*.txt</sourcecode>
+        </script>
+        <script id="phpBasicHelloWorld">
+            <description>Basic 'hello, world...' snippet</description>
+            <languages>
+                <language>html</language>
+                <language>php</language>
+            </languages>
+           
+            <sourcecode>&lt;html&gt;
+                &lt;head&gt;
+                &lt;title&gt;PHP Test&lt;/title&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;?php echo '&lt;p&gt;Hello World&lt;/p&gt;'; ?&gt; 
+                &lt;/body&gt;
+                &lt;/html&gt;</sourcecode>
+        </script>
+    </scripts>
+</top>

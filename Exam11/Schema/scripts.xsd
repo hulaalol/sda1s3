@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified"
+    vc:minVersion="1.1">
+    
+    <xs:element name="top">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="languages" minOccurs="1" maxOccurs="1"/>
+                <xs:element ref="scripts" minOccurs="1" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+
+        
+        <xs:key name="defined_languages">
+            <xs:selector xpath="./languages/language"></xs:selector>
+            <xs:field xpath="."></xs:field>
+        </xs:key>
+        
+        
+        <xs:keyref name="only_defined_languages" refer="defined_languages">
+            <xs:selector xpath="./scripts/script/languages/language"/>
+            <xs:field xpath="."></xs:field>
+        </xs:keyref>
+        
+        <xs:keyref name="only_defined_single_language" refer="defined_languages">
+            <xs:selector xpath="./scripts/script/language"/>
+            <xs:field xpath="."></xs:field>
+        </xs:keyref>
+        
+        <xs:unique name="unique_language">
+            <xs:selector xpath="./languages/language"/>
+            <xs:field xpath="."/>
+        </xs:unique>
+        
+        <xs:unique name="unique_language_list">
+            <xs:selector xpath="./scripts/script/languages/language"/>
+            <xs:field xpath="."/>
+        </xs:unique>
+        
+        <xs:unique name="unique_id">
+            <xs:selector xpath="./scripts/script"/>
+            <xs:field xpath="@id"></xs:field>
+        </xs:unique>
+
+    </xs:element>
+    
+    
+    
+    
+    <xs:element name="languages">
+        <xs:complexType>
+            <xs:sequence>
+               <xs:element ref="language" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+        
+
+    </xs:element>
+    
+    
+    <xs:element name="language">
+        <xs:simpleType>
+            <xs:restriction base="xs:NMTOKEN"></xs:restriction>
+        </xs:simpleType>
+    </xs:element>
+    
+    
+    
+    <xs:element name="scripts">
+        <xs:complexType>
+            <xs:sequence>
+                
+                <xs:element name="script" maxOccurs="unbounded">
+                    <xs:complexType>
+                        
+                        <xs:sequence>
+                            
+                            <xs:element name="description" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                                
+                            </xs:element>
+                            
+                            
+                            <xs:choice>
+                                <xs:element ref="language" maxOccurs="1" minOccurs="1"/>
+                                <xs:element ref="languages" maxOccurs="1" minOccurs="1"/>
+                            </xs:choice>
+
+                            <xs:element name="sourcecode" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                </xs:simpleType>
+                            </xs:element>
+                        </xs:sequence>
+                        
+                        
+                        
+                        <xs:attribute name="id" use="required">
+                            <xs:simpleType>
+                              <xs:restriction base="xs:NMTOKEN"/>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        
+                        
+                    </xs:complexType>
+                    
+
+                </xs:element>
+
+            </xs:sequence>
+        </xs:complexType>
+        
+
+    </xs:element>
+
+</xs:schema>
