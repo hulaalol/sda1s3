@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="book2html.xsl">
+    
+    
+    <x:import href="../Book1/bookBasicTest.xspec" />
+    
+    <x:scenario label="Testing @id in 'chapter'">
+        
+        <x:context select="/chapter/title">
+            <chapter id='idValue'>
+                <title>Abc</title>
+            </chapter>
+        </x:context>
+        
+        <x:expect label="'title' text being wrapped in a 'h2' element">
+            <h2 id='idValue'>Abc</h2>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing @id in 'para'">
+        
+        <x:context>
+            <para id='idValue'>Abc</para>
+        </x:context>
+        
+        <x:expect label="'para' text being wrapped in a 'p' element supplying @id">
+            <p id='idValue'>Abc</p>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing @id in 'book'">
+        
+        <x:context>
+            <book id='idValue'>
+                <title>Abc</title>
+                <chapter>
+                    <title>Def</title>
+                    <para>Ghi</para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="Transfer @id value in 'book' to 'body' tag">
+            <html>
+                <head>
+                    <title>Abc</title>
+                </head>
+                <body id='idValue'>
+                    <h1>Abc</h1>
+                    <h2>Def</h2>
+                    <p>Ghi</p>
+                </body>
+            </html>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing element content of 'emphasis'">
+        
+        <x:context>
+            <emphasis>AbC</emphasis>
+        </x:context>
+        
+        <x:expect label="'emphasis' text being wrapped in a 'em' element">
+            <em>AbC</em>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing 'para' mixed text with 'emphasis'">
+          
+        <x:context>
+            <para>Some <emphasis>important</emphasis> text</para>
+        </x:context>
+          
+        <x:expect label="'para' components being wrapped in a 'p' element containing 'em'">
+            <p>Some <em>important</em> text</p>
+        </x:expect>
+          
+    </x:scenario>
+    
+    <x:scenario label="Testing @linkend and element content of 'link'">
+        <x:context>
+            <link linkend='DeF'>AbC</link>
+        </x:context>
+        <x:expect label="'link' text being wrapped in a 'a' element providing @href attribute">
+            <a href='#DeF'>AbC</a>
+        </x:expect>
+    </x:scenario>
+    
+    <x:scenario label="Testing mixed 'para' content">
+        <x:context>
+            <para>See <emphasis>important hint</emphasis> in <link linkend='firstChapter'>start chapter</link></para>
+        </x:context>
+        <x:expect label="'em' and 'a' tags being wrapped in a 'p' element">
+            <p>See <em>important hint</em> in <a href='#firstChapter'>start chapter</a></p>
+        </x:expect>
+    </x:scenario>
+    
+</x:description>

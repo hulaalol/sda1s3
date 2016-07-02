@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="book.xsd">
+    <title>Beginning XSL</title>
+    <chapter id="firstChapter">
+        <title>Basic structure</title>
+        <para>An XSLT consists of a stylesheet declaration and a set of templates.</para>
+        <para>Do <emphasis>not forget</emphasis>: template elements must not be nested!</para>
+    </chapter>
+    <chapter>
+        <title>Important elements</title>
+        <para id="someText">Some more text.</para>
+        <para>The <link linkend="firstChapter">first chapter</link> explains basic structures.</para>
+    </chapter>
+</book>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    stylesheet="book2html.xsl">
+    
+    <x:scenario label="Testing 'title' being immediate child of 'book'">
+         
+        <x:context select="/book/title">
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title>Abcd</title>
+                <chapter>
+                    <title></title>
+                    <para></para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="'title' text being wrapped in a 'h1' element" >
+            <h1>Abcd</h1>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing 'title' being immediate child of 'chapter'">
+        
+        <x:context select="/book/chapter/title">
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title>Abcd</title>
+                <chapter>
+                    <title>Defg</title>
+                    <para></para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="'title' text being wrapped in a 'h2' element" >
+            <h2>Defg</h2>
+        </x:expect>
+        
+    </x:scenario>
+    
+
+    <x:scenario label="Testing basic 'chapter' structure">
+        
+        <x:context select="/book/chapter">
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title>Abc</title>
+                <chapter>
+                    <title>Def</title>
+                    <para>Ghi</para>
+                    <para>Jkl</para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="Expecting 'h2' containing AbC and two 'p' tags containing X and Y">
+            <h2>Def</h2>
+            <p>Ghi</p>
+            <p>Jkl</p>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing multiple 'chapter' nodes">
+        
+        <x:context select="/book/chapter">
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title>Abc</title>
+                <chapter>
+                    <title>Def</title>
+                    <para>Ghi</para>
+                    <para>Jkl</para>
+                </chapter>
+                <chapter>
+                    <title>Lmn</title>
+                    <para>Opq</para>
+                    <para>Rst</para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="Expecting 'h2' followed by 'p'. Repetition with corresponding values B and Y">
+            
+            <h2>Def</h2>
+            <p>Ghi</p>
+            <p>Jkl</p>
+
+            <h2>Lmn</h2>
+            <p>Opq</p>
+            <p>Rst</p>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing minimal html root skeleton">
+        
+        <x:context>
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title/>
+                <chapter>
+                    <title/>
+                    <para/>
+                    <para/>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="Expecting HTML root structure">
+            <html>
+                <head><title/></head>
+                <body>
+                    <h1/>
+                    <h2/>
+                    <p/>
+                    <p/>
+                </body>
+            </html>
+        </x:expect>
+        
+    </x:scenario>
+    
+    <x:scenario label="Testing complete example">
+        
+        <x:context>
+            <book xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="book.xsd">
+                <title>AbC</title>
+                <chapter>
+                    <title>Def</title>
+                    <para>Ghi</para>
+                </chapter>
+            </book>
+        </x:context>
+        
+        <x:expect label="Expecting HTML root structure">
+            <html>
+                <head>
+                    <title>AbC</title>
+                </head>
+                <body>
+                    <h1>AbC</h1>
+                    <h2>Def</h2>
+                    <p>Ghi</p>
+                </body>
+            </html>
+        </x:expect>
+        
+    </x:scenario>
+    
+</x:description>

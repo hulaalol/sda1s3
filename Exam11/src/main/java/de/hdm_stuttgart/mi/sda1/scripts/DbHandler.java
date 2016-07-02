@@ -33,9 +33,6 @@ public class DbHandler {
 	public DbHandler() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hdm", "hdmuser", "XYZ");
-		
-		
-
 	}
 	
 	public static void main(String[] args) {
